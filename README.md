@@ -16,6 +16,7 @@ import (
 	"github.com/junlicn/yami"
 	"log"
 	"time"
+ 	"syscall"
 )
 
 func main() {
