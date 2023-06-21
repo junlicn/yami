@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/cajax/yami"
+	"github.com/junlicn/yami"
 	"log"
 	"time"
 )
