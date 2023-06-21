@@ -9,6 +9,7 @@ import (
 	"errors"
 	"os/exec"
 	"time"
+	"syscall"
 )
 
 var (
