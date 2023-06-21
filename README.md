@@ -13,7 +13,7 @@ Current version mapping matches [XML v2](https://mediaarea.net/mediainfo/mediain
 package main
 
 import (
-	"github.com/cajax/yami"
+	"github.com/junlicn/yami"
 	"log"
 	"time"
 )
