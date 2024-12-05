@@ -48,6 +48,13 @@ func GetMediaInfoContext(ctx context.Context, filePath string, arg ...string) (m
 	)
 	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 
+	    // 设置 UTF-8 环境
+    	cmd.Env = append(os.Environ(), 
+        "LANG=en_US.UTF-8",
+        "LC_ALL=en_US.UTF-8",
+        "PYTHONIOENCODING=utf8")
+	
+
 	var outputBuf bytes.Buffer
 	cmd.Stdout = &outputBuf
 
@@ -76,11 +83,16 @@ func GetMediaInfoContext(ctx context.Context, filePath string, arg ...string) (m
 		}
 	}
 
+	// 处理输出，确保 UTF-8 合法性
+	output := outputBuf.Bytes()
+	output = bytes.ToValidUTF8(output, []byte{'?'}) // 将非法 UTF-8 序列替换为 '?'
+    
 	mediaInfo = &MediaInfo{}
-	err = xml.Unmarshal(outputBuf.Bytes(), mediaInfo)
+	err = xml.Unmarshal(output, mediaInfo)
 	if err != nil {
-		return nil, err
-	}
-
+        	// 如果还是有错误，记录更详细的信息
+        	return nil, fmt.Errorf("XML parse error: %v, raw output: %s", err, string(output[:min(len(output), 200)]))
+    	}
+	
 	return mediaInfo, nil
 }
