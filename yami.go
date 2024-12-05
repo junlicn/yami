@@ -46,14 +46,12 @@ func GetMediaInfoContext(ctx context.Context, filePath string, arg ...string) (m
 		binPath,
 		Args...,
 	)
-	//cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 
-	    // 设置 UTF-8 环境
-    	cmd.Env = append(os.Environ(), 
-        "LANG=en_US.UTF-8",
-        "LC_ALL=en_US.UTF-8",
-        "PYTHONIOENCODING=utf8")
-	
+	// 设置 UTF-8 环境
+	cmd.Env = append(os.Environ(),
+		"LANG=en_US.UTF-8",
+		"LC_ALL=en_US.UTF-8",
+		"PYTHONIOENCODING=utf8")
 
 	var outputBuf bytes.Buffer
 	cmd.Stdout = &outputBuf
