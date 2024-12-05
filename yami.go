@@ -3,24 +3,22 @@
 package yami
 
 import (
-	"bytes"
-	"context"
-	"encoding/xml"
-	"errors"
-	"os/exec"
-	"time"
-	”fmt"
-	"os"
-	//"syscall"
+    "bytes"
+    "context"
+    "encoding/xml"
+    "errors"
+    "fmt"
+    "os"
+    "os/exec"
+    "time"
 )
 
 var (
-	// ErrBinNotFound is returned when the mediainfo binary was not found
-	ErrBinNotFound = errors.New("mediainfo bin not found")
-	// ErrTimeout is returned when the mediainfo process did not succeed within the given time
-	ErrTimeout = errors.New("process timeout exceeded")
-
-	binPath = "mediainfo"
+    // ErrBinNotFound is returned when the mediainfo binary was not found
+    ErrBinNotFound = errors.New("mediainfo bin not found")
+    // ErrTimeout is returned when the mediainfo process did not succeed within the given time
+    ErrTimeout = errors.New("process timeout exceeded")
+    binPath    = "mediainfo"
 )
 
 //SetMediainfoBinPath sets path to Mediainfo binary
