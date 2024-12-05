@@ -9,7 +9,7 @@ import (
 	"errors"
 	"os/exec"
 	"time"
-	"syscall"
+	//"syscall"
 )
 
 var (
@@ -46,7 +46,7 @@ func GetMediaInfoContext(ctx context.Context, filePath string, arg ...string) (m
 		binPath,
 		Args...,
 	)
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	//cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 
 	    // 设置 UTF-8 环境
     	cmd.Env = append(os.Environ(), 
